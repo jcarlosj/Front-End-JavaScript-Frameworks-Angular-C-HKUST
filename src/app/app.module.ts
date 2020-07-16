@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+/** Dependencies */
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 /** Angular Material Components */
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -20,6 +23,7 @@ import { MenuComponent } from './menu/menu.component';
     BrowserModule,
     BrowserAnimationsModule,
     HammerModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatListModule
   ],
