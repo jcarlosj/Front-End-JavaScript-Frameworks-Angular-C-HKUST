@@ -15,11 +15,13 @@ import { MatButtonModule } from '@angular/material/button';
 
 /** Components */
 import { MenuComponent } from './menu/menu.component';
+import { DishDetailComponent } from './dish-detail/dish-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    DishDetailComponent
   ],
   imports: [
     BrowserModule,
