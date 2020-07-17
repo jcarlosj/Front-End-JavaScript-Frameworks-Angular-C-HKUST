@@ -56,8 +56,8 @@ const DISHES: Dish[] = [
 export class MenuComponent implements OnInit {
 
     /** Atributes */
-	dishes = DISHES;
-	selectedDish: Dish = DISHES[ 0 ];
+  dishes: Dish[] = DISHES;
+  selectedDish: Dish = DISHES[ 0 ];
 
   constructor() { }
 
