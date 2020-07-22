@@ -20,6 +20,7 @@ import { DishDetailComponent } from './dish-detail/dish-detail.component';
 
 /** Services */
 import { DishService } from './services/dish.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DishService } from './services/dish.service';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    FontAwesomeModule
   ],
   providers: [
     DishService

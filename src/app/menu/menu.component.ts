@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 /** Models */
 import { Dish } from '../shared/Dish';
 
@@ -16,6 +18,7 @@ export class MenuComponent implements OnInit {
     /** Atributes */
     dishes: Dish[];
     selectedDish: Dish;
+    faCoffee = faCoffee;
 
     constructor( private dishService: DishService ) { }
 
