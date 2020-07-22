@@ -21,12 +21,16 @@ import { DishDetailComponent } from './dish-detail/dish-detail.component';
 /** Services */
 import { DishService } from './services/dish.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    DishDetailComponent
+    DishDetailComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
