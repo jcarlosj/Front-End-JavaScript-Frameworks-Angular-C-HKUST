@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 /** Models */
 import { Dish } from '../shared/Dish';
 
-/** Static Data */
-import { DISHES } from '../shared/dishes';
+/** Service */
+import { DishService } from '../services/dish.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,13 +14,14 @@ import { DISHES } from '../shared/dishes';
 export class MenuComponent implements OnInit {
 
     /** Atributes */
-  dishes: Dish[] = DISHES;
-  selectedDish: Dish;
+    dishes: Dish[];
+    selectedDish: Dish;
 
-  constructor() { }
+    constructor( private dishService: DishService ) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+        this .dishes = this .dishService .getDishes();
+    }
 
     onSelect( dish: Dish ) {
         this .selectedDish = dish;
