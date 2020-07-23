@@ -19,15 +19,19 @@ import { MenuComponent } from './menu/menu.component';
 import { DishDetailComponent } from './dish-detail/dish-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { ContactComponent } from './contact/contact.component';
 
 /** Services */
 import { DishService } from './services/dish.service';
 
+/** Routing */
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 /** Dependencies */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +46,7 @@ import { ContactComponent } from './contact/contact.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     HammerModule,
     FlexLayoutModule,
     MatToolbarModule,
