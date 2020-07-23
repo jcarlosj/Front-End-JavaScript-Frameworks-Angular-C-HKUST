@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+/** Dependencies */
+import { faHome, faInfo, faList } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+    /** Icons */
+    faHome = faHome;
+    faInfo = faInfo;
+    faList = faList;
+    faAddressCard = faAddressCard;
 
-  ngOnInit(): void {
-  }
+    constructor() { }
+
+    ngOnInit(): void {
+    }
 
 }

@@ -17,13 +17,14 @@ import { MatListModule } from '@angular/material/list';
 /** Components */
 import { MenuComponent } from './menu/menu.component';
 import { DishDetailComponent } from './dish-detail/dish-detail.component';
-
-/** Services */
-import { DishService } from './services/dish.service';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+/** Services */
+import { DishService } from './services/dish.service';
+
+/** Dependencies */
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
