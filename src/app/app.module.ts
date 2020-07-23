@@ -22,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 /** Services */
 import { DishService } from './services/dish.service';
@@ -31,7 +32,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 
 /** Dependencies */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
