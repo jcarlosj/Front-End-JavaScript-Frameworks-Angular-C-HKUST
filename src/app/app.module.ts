@@ -31,6 +31,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 
 /** Dependencies */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
