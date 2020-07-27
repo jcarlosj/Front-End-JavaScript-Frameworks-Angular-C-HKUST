@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
 
+/** Models */
+import { Leader } from '../shared/Leader';
+
+/** Static Data */
+import { LEADERS } from '../shared/leaders';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LeaderService {
 
-  constructor() { }
+    constructor() { }
+
+    /** Get all the leaders */
+    getLeaders(): Leader[] {
+      return LEADERS;
+    }
+    /** Get leader by ID */
+    getLeader( id: string ): Leader {
+        return LEADERS .filter( ( leader ) => ( leader .id === id ) ) [ 0 ];
+    }
+    /** Get only featured dishes */
+    getFeaturedLeader(): Leader {
+        return LEADERS .filter( ( leader ) => leader .featured ) [ 0 ];
+    }
 }

@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 /** Services */
 import { DishService } from './services/dish.service';
+import { LeaderService } from './services/leader.service';
 
 /** Routing */
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -59,7 +60,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   providers: [
-    DishService
+    DishService,
+    LeaderService
   ],
   bootstrap: [AppComponent]
 })
