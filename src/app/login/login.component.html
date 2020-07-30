@@ -1,1 +1,39 @@
-<p>login works!</p>
+<h2 mat-dialog-title>Login</h2>
+
+<p>
+    <code>{{ user | json }}</code>
+</p>
+
+<form novalidate (ngSubmit)="onSubmit()">
+
+    <mat-dialog-content class="mat-typography">
+        <p>
+            <mat-form-field>
+                <input matInput
+                    placeholder="Username"
+                    type="text"
+                    [(ngModel)]="user .username"
+                    name="username"
+                >
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput
+                    placeholder="Password"
+                    type="password"
+                    [(ngModel)]="user .password"
+                    name="password"
+                >
+            </mat-form-field>
+            <mat-checkbox
+                name="remember"
+                [(ngModel)]="user .remember"
+            >Remember Me</mat-checkbox>
+        </p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <span class="flex-spacer"></span>
+        <button mat-button [mat-dialog-close]="true">Cancel</button>
+        <button type="submit" mat-button class="background-primary text-floral-white">Login</button>
+    </mat-dialog-actions>
+
+</form>

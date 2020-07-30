@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
     onLoginForm() {
         this .dialog .open( LoginComponent, {
             width: '500px',
-            height: '450px'
+            height: 'auto'
         });
     }
 
