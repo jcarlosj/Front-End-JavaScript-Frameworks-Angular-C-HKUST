@@ -13,6 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule} from '@angular/material/dialog';
 
 /** Components */
 import { MenuComponent } from './menu/menu.component';
@@ -22,6 +23,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 /** Services */
@@ -44,7 +46,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatCardModule,
     MatButtonModule,
     MatListModule,
+    MatDialogModule,
     FontAwesomeModule
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   providers: [
     DishService,

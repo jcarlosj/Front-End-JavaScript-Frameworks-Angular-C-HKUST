@@ -4,6 +4,10 @@
     <a mat-button [routerLink]="[ '/about' ]" [routerLinkActive]="[ 'active' ]"><fa-icon [icon]="faInfo" size="lg"></fa-icon> About</a>
     <a mat-button [routerLink]="[ '/menu' ]" [routerLinkActive]="[ 'active' ]"><fa-icon [icon]="faList" size="lg"></fa-icon> Menu</a>
     <a mat-button [routerLink]="[ '/contact' ]" [routerLinkActive]="[ 'active' ]"><fa-icon [icon]="faAddressCard" size="lg"></fa-icon> Contact</a>
+    <span class="flex-spacer"></span>
+    <a mat-button (click)="onLoginForm()">
+        <fa-icon [icon]="faSignInAlt" size="lg"></fa-icon> Login
+    </a>
 </mat-toolbar>
 
 <div class="container jumbotron"
