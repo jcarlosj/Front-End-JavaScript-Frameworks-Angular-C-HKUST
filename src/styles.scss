@@ -30,8 +30,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .background-primary {
     background-color: $background-dark;
 }
+.background-secondary {
+    background-color: $background-pale;
+}
 .background-accent {
     background-color: $accent-color;
+}
+.text-secondary {
+  color: $secondary-text-color;
 }
 .text-floral-white {
     color: floralwhite;
