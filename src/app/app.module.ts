@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 /** Dependencies */
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -19,6 +19,8 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 /** Components */
 import { MenuComponent } from './menu/menu.component';
@@ -56,6 +58,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HammerModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -66,6 +69,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatSlideToggleModule,
     MatCheckboxModule,
     FontAwesomeModule
   ],
