@@ -41,37 +41,53 @@
         <p><code>{{ feedBackForm.value | json }} </code></p>
         <p><code>{{ feedBackForm.status | json }}</code></p>
 
-        <form novalidate [formGroup]="feedBackForm" (ngSubmit)="onSubmit()">
+        <form novalidate
+            [formGroup]="feedBackForm"
+            #contactForm="ngForm"
+            (ngSubmit)="onSubmit()"
+        >
             <p>
                 <mat-form-field class="half-width">
                     <input matInput
                         formControlName="firstName"
-                        placeholder="First Name"
+                        placeholder="First Name*"
                         type="text"
                     >
+                    <mat-error *ngIf="feedBackForm .get( 'firstName' ) .hasError( 'required' ) && feedBackForm .get( 'firstName' ) .touched">
+                        First name is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field class="half-width">
                     <input matInput
                         formControlName="lastName"
-                        placeholder="Last Name"
+                        placeholder="Last Name*"
                         type="text"
                     >
+                    <mat-error *ngIf="feedBackForm .get( 'lastName' ) .hasError( 'required' ) && feedBackForm .get( 'lastName' ) .touched">
+                        Last name is required
+                    </mat-error>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="half-width">
                     <input matInput
                         formControlName="phoneNumber"
-                        placeholder="Tel. Number"
+                        placeholder="Tel. Number*"
                         type="tel"
                     >
+                    <mat-error *ngIf="feedBackForm .get( 'phoneNumber' ) .hasError( 'required' ) && feedBackForm .get( 'phoneNumber' ) .touched">
+                        Phone number is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field class="half-width">
                     <input matInput
                         formControlName="email"
-                        placeholder="Email"
+                        placeholder="Email*"
                         type="email"
                     >
+                    <mat-error *ngIf="feedBackForm .get( 'email' ) .hasError( 'required' ) && feedBackForm .get( 'email' ) .touched">
+                        Email is required
+                    </mat-error>
                 </mat-form-field>
             </p>
             <table class="form-size">
@@ -95,7 +111,11 @@
                     ></textarea>
                 </mat-form-field>
             </p>
-            <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+            <button mat-button
+                type="submit"
+                [class]="( feedBackForm .invalid ? 'background-secondary text-secondary' : 'background-primary text-floral-white' )"
+                [disabled]="feedBackForm .invalid"
+            >Submit</button>
         </form>
     </div>
 
