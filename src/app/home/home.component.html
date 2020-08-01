@@ -18,6 +18,10 @@
             </p>
         </mat-card-content>
     </mat-card>
+    <div [hidden]="dish" fxFlex>
+        <mat-spinner class="spinner"></mat-spinner>
+        <h4 class="spinner-text">Loading...</h4>
+    </div>
 
     <mat-card *ngIf="promotion" fxFlex>
         <mat-card-header>

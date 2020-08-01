@@ -15,8 +15,8 @@ export class DishService {
     /** Get all the dishes */
     getDishes(): Promise<Dish[]> {
         return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => resolve( DISHES ), 2000 );
+            // Simulate server latency with 3 second delay
+            setTimeout( () => resolve( DISHES ), 3000 );
         });
     }
     /** Get dish by ID */
