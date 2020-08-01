@@ -54,27 +54,26 @@
         </mat-card>
     </div>
 
-    <div fxFlex>
-
-        <div
-          *ngIf="leaders .length > 0"
-          fxLayout="column"
-          fxLayoutGap="10px"
-        >
-
-            <mat-list fxFlex>
-                <h2>Corporate Leadership</h2>
-                <mat-list-item *ngFor="let leader of leaders">
-                    <img matListAvatar [src]='leader .image' [alt]='leader .name'>
-                    <h1 matLine> {{ leader .name }}, {{ leader .abbr }}</h1>
-                    <h2 matLine> {{ leader .designation }} </h2>
-                    <p matLine>
-                        <md-truncate flex>{{ leader .description }}</md-truncate>
-                    </p>
-                </mat-list-item>
-            </mat-list>
-
-        </div>
+    <div
+        fxFlex
+        *ngIf="leaders"
+        fxLayout="column"
+        fxLayoutGap="10px"
+    >
+        <mat-list fxFlex>
+            <h2>Corporate Leadership</h2>
+            <mat-list-item *ngFor="let leader of leaders">
+                <img matListAvatar [src]='leader .image' [alt]='leader .name'>
+                <h1 matLine> {{ leader .name }}, {{ leader .abbr }}</h1>
+                <h2 matLine> {{ leader .designation }} </h2>
+                <p matLine md-truncate flex>{{ leader .description }} </p>
+            </mat-list-item>
+        </mat-list>
 
     </div>
+    <div [hidden]="leaders" fxFlex>
+        <mat-spinner class="spinner"></mat-spinner>
+        <h4 class="spinner-text">Loading Leaders... Please Wait</h4>
+    </div>
+
 </div>

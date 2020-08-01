@@ -15,15 +15,24 @@ export class PromotionService {
 
     /** Get all the promotions */
     getPromotions(): Promise<Promotion[]> {
-        return Promise .resolve( PROMOTIONS );
+        return new Promise( resolve => {
+            // Simulate server latency with 2 second delay
+            setTimeout( () => resolve( PROMOTIONS ), 2000 );
+        });
     }
     /** Get promotion by ID */
     getPromotion( id: string ): Promise<Promotion> {
-        return Promise .resolve( PROMOTIONS .filter( ( promo ) => ( promo .id === id ) ) [ 0 ] );
+        return new Promise( resolve=> {
+            // Simulate server latency with 2 second delay
+            setTimeout( () => resolve( PROMOTIONS .filter( ( dish ) => ( dish .id === id ) ) [ 0 ] ), 2000 );
+        });
     }
     /** Get only featured dishes */
     getFeaturedPromotion(): Promise<Promotion> {
-        return Promise .resolve( PROMOTIONS .filter( ( promotion ) => promotion .featured ) [ 0 ] );
+        return new Promise( resolve => {
+            // Simulate server latency with 2 second delay
+            setTimeout( () => { resolve( PROMOTIONS .filter( ( dish ) => dish .featured ) [ 0 ] ) }, 2000 );
+        });
     }
 
 }

@@ -11,7 +11,8 @@ import { DISHES } from '../shared/dishes';
 })
 export class DishService {
 
-  constructor() { }
+    constructor() { }
+
     /** Get all the dishes */
     getDishes(): Promise<Dish[]> {
         return new Promise( resolve => {

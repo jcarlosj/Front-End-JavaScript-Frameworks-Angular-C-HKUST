@@ -13,7 +13,7 @@ import { LeaderService } from '../services/leader.service';
 })
 export class AboutComponent implements OnInit {
     /** Attributes */
-    leaders: Leader[] = [];
+    leaders: Leader[];
 
     constructor(
         private leaderService: LeaderService
