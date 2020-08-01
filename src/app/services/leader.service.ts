@@ -14,15 +14,15 @@ export class LeaderService {
     constructor() { }
 
     /** Get all the leaders */
-    getLeaders(): Leader[] {
-      return LEADERS;
+    getLeaders(): Promise<Leader[]> {
+      return Promise .resolve( LEADERS );
     }
     /** Get leader by ID */
-    getLeader( id: string ): Leader {
-        return LEADERS .filter( ( leader ) => ( leader .id === id ) ) [ 0 ];
+    getLeader( id: string ): Promise<Leader> {
+        return Promise .resolve( LEADERS .filter( ( leader ) => ( leader .id === id ) ) [ 0 ] );
     }
     /** Get only featured dishes */
-    getFeaturedLeader(): Leader {
-        return LEADERS .filter( ( leader ) => leader .featured ) [ 0 ];
+    getFeaturedLeader(): Promise<Leader> {
+        return Promise .resolve( LEADERS .filter( ( leader ) => leader .featured ) [ 0 ] );
     }
 }

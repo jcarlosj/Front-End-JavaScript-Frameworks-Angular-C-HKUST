@@ -20,7 +20,9 @@ export class AboutComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this .leaders = this .leaderService .getLeaders();
+        /** Receive a promise */
+        this .leaderService .getLeaders()
+            .then( leaders => this .leaders = leaders );
     }
 
 }
