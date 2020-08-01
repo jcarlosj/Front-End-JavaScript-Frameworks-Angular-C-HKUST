@@ -14,16 +14,16 @@ export class PromotionService {
     constructor() { }
 
     /** Get all the promotions */
-    getPromotions(): Promotion[] {
-        return PROMOTIONS;
+    getPromotions(): Promise<Promotion[]> {
+        return Promise .resolve( PROMOTIONS );
     }
     /** Get promotion by ID */
-    getPromotion( id: string ): Promotion {
-        return PROMOTIONS .filter( ( promo ) => ( promo .id === id ) ) [ 0 ];
+    getPromotion( id: string ): Promise<Promotion> {
+        return Promise .resolve( PROMOTIONS .filter( ( promo ) => ( promo .id === id ) ) [ 0 ] );
     }
     /** Get only featured dishes */
-    getFeaturedPromotion(): Promotion {
-        return PROMOTIONS .filter( ( promotion ) => promotion .featured ) [ 0 ];
+    getFeaturedPromotion(): Promise<Promotion> {
+        return Promise .resolve( PROMOTIONS .filter( ( promotion ) => promotion .featured ) [ 0 ] );
     }
 
 }

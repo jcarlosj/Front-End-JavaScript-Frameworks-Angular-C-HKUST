@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
         /** Receive a promise */
         this .dishService .getFeaturedDish()
              .then( dish => this .dish = dish );
-        this .promotion = this .promotionService .getFeaturedPromotion();
+        /** Receive a promise */
+        this .promotionService .getFeaturedPromotion()
+             .then( promotion => this .promotion = promotion );
         /** Receive a promise */
         this .leaderService .getFeaturedLeader()
              .then( leader => this .leader = leader );

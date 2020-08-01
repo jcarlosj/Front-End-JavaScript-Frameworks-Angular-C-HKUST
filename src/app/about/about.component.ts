@@ -13,7 +13,7 @@ import { LeaderService } from '../services/leader.service';
 })
 export class AboutComponent implements OnInit {
     /** Attributes */
-    leaders: Leader[];
+    leaders: Leader[] = [];
 
     constructor(
         private leaderService: LeaderService
@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
     ngOnInit(): void {
         /** Receive a promise */
         this .leaderService .getLeaders()
-            .then( leaders => this .leaders = leaders );
+             .then( leaders => this .leaders = leaders );
     }
 
 }
