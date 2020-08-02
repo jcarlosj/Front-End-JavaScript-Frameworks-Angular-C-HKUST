@@ -17,6 +17,11 @@ export class DishService {
 
     constructor() { }
 
+    /** Get all the IDs of the dishes */
+    getDishIds(): Observable< string[] | any > {
+        return of( DISHES .map( dish => dish .id ) );    // Create an Observable: Converts the arguments to an observable sequence.
+    }
+
     /** Get all the dishes */
     getDishes(): Observable<Dish[]> {
         return of( DISHES )                 // Create an Observable: Converts the arguments to an observable sequence.
