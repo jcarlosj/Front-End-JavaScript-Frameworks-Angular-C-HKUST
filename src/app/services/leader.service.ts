@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+/** ReactiveX Libraries */
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 /** Models */
 import { Leader } from '../shared/Leader';
 
@@ -15,23 +19,20 @@ export class LeaderService {
 
     /** Get all the leaders */
     getLeaders(): Promise<Leader[]> {
-        return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => resolve( LEADERS ), 2000 );
-        });
+      return of( LEADERS )                // Create an Observable: Converts the arguments to an observable sequence.
+                .pipe( delay( 2000 ) )    // Simulate server latency with 2 second delay.
+                .toPromise();             // Convert observable to Promise.
     }
     /** Get leader by ID */
     getLeader( id: string ): Promise<Leader> {
-        return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => resolve( LEADERS .filter( ( dish ) => ( dish .id === id ) ) [ 0 ] ), 2000 );
-        });
+        return of( LEADERS .filter( ( leader ) => ( leader .id === id ) ) [ 0 ] )   // Create an Observable: Converts the arguments to an observable sequence.
+                  .pipe( delay( 2000 ) )                                        // Simulate server latency with 2 second delay.
+                  .toPromise();                                                 // Convert observable to Promise.
     }
-    /** Get only featured dishes */
+    /** Get only featured leaders */
     getFeaturedLeader(): Promise<Leader> {
-        return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => { resolve( LEADERS .filter( ( dish ) => dish .featured ) [ 0 ] ) }, 2000 );
-        });
+        return of( LEADERS .filter( ( leader ) => leader .featured ) [ 0 ] )    // Create an Observable: Converts the arguments to an observable sequence.
+                  .pipe( delay( 2000 ) )                                    // Simulate server latency with 2 second delay.
+                  .toPromise();                                             // Convert observable to Promise.
     }
 }

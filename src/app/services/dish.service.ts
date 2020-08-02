@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+/** ReactiveX Libraries */
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 /** Models */
 import { Dish } from '../shared/Dish';
 
@@ -15,23 +19,20 @@ export class DishService {
 
     /** Get all the dishes */
     getDishes(): Promise<Dish[]> {
-        return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => resolve( DISHES ), 2000 );
-        });
+        return of( DISHES )                 // Create an Observable: Converts the arguments to an observable sequence.
+                  .pipe( delay( 2000 ) )    // Simulate server latency with 2 second delay.
+                  .toPromise();             // Convert observable to Promise.
     }
     /** Get dish by ID */
     getDish( id: string ): Promise<Dish> {
-        return new Promise( resolve=> {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => resolve( DISHES .filter( ( dish ) => ( dish .id === id ) ) [ 0 ] ), 2000 );
-        });
+        return of( DISHES .filter( dish => dish .id === id ) [ 0 ] )    // Create an Observable: Converts the arguments to an observable sequence.
+                  .pipe( delay( 2000 ) )                                // Simulate server latency with 2 second delay.
+                  .toPromise();                                         // Convert observable to Promise.
     }
     /** Get only featured dishes */
     getFeaturedDish(): Promise<Dish> {
-        return new Promise( resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout( () => { resolve( DISHES .filter( ( dish ) => dish .featured ) [ 0 ] ) }, 2000 );
-        });
+        return of( DISHES .filter( ( dish ) => dish .featured ) [ 0 ] ) // Create an Observable: Converts the arguments to an observable sequence.
+                  .pipe( delay( 2000 ) )                                // Simulate server latency with 2 second delay.
+                  .toPromise();                                         // Convert observable to Promise.
     }
 }
