@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /** ReactiveX Libraries */
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 /** Models */
@@ -18,21 +18,18 @@ export class DishService {
     constructor() { }
 
     /** Get all the dishes */
-    getDishes(): Promise<Dish[]> {
+    getDishes(): Observable<Dish[]> {
         return of( DISHES )                 // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )    // Simulate server latency with 2 second delay.
-                  .toPromise();             // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );   // Simulate server latency with 2 second delay.
     }
     /** Get dish by ID */
-    getDish( id: string ): Promise<Dish> {
+    getDish( id: string ): Observable<Dish> {
         return of( DISHES .filter( dish => dish .id === id ) [ 0 ] )    // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                // Simulate server latency with 2 second delay.
-                  .toPromise();                                         // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                               // Simulate server latency with 2 second delay.
     }
     /** Get only featured dishes */
-    getFeaturedDish(): Promise<Dish> {
+    getFeaturedDish(): Observable<Dish> {
         return of( DISHES .filter( ( dish ) => dish .featured ) [ 0 ] ) // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                // Simulate server latency with 2 second delay.
-                  .toPromise();                                         // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                               // Simulate server latency with 2 second delay.
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /** ReactiveX Libraries */
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 /** Models */
@@ -18,22 +18,19 @@ export class PromotionService {
     constructor() { }
 
     /** Get all the promotions */
-    getPromotions(): Promise<Promotion[]> {
+    getPromotions(): Observable<Promotion[]> {
         return of( PROMOTIONS )                 // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )        // Simulate server latency with 2 second delay.
-                  .toPromise();                 // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );       // Simulate server latency with 2 second delay.
     }
     /** Get promotion by ID */
-    getPromotion( id: string ): Promise<Promotion> {
+    getPromotion( id: string ): Observable<Promotion> {
         return of( PROMOTIONS .filter( ( promotion ) => ( promotion .id === id ) ) [ 0 ] )  // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                                    // Simulate server latency with 2 second delay.
-                  .toPromise();                                                             // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                                                   // Simulate server latency with 2 second delay.
     }
     /** Get only featured promotions */
-    getFeaturedPromotion(): Promise<Promotion> {
+    getFeaturedPromotion(): Observable<Promotion> {
         return of( PROMOTIONS .filter( ( promotion ) => promotion .featured ) [ 0 ] )       // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                                    // Simulate server latency with 2 second delay.
-                  .toPromise();                                                             // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                                                   // Simulate server latency with 2 second delay.
     }
 
 }

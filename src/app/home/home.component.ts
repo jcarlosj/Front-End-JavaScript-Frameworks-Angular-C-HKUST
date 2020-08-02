@@ -28,15 +28,15 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        /** Receive a promise */
+        /** Receive a Observable */
         this .dishService .getFeaturedDish()
-             .then( dish => this .dish = dish );
-        /** Receive a promise */
+             .subscribe( dish => this .dish = dish );
+        /** Receive a Observable */
         this .promotionService .getFeaturedPromotion()
-             .then( promotion => this .promotion = promotion );
-        /** Receive a promise */
+             .subscribe( promotion => this .promotion = promotion );
+        /** Receive a Observable */
         this .leaderService .getFeaturedLeader()
-             .then( leader => this .leader = leader );
+             .subscribe( leader => this .leader = leader );
     }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /** ReactiveX Libraries */
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 /** Models */
@@ -18,21 +18,18 @@ export class LeaderService {
     constructor() { }
 
     /** Get all the leaders */
-    getLeaders(): Promise<Leader[]> {
+    getLeaders(): Observable<Leader[]> {
       return of( LEADERS )                // Create an Observable: Converts the arguments to an observable sequence.
-                .pipe( delay( 2000 ) )    // Simulate server latency with 2 second delay.
-                .toPromise();             // Convert observable to Promise.
+                .pipe( delay( 2000 ) );   // Simulate server latency with 2 second delay.
     }
     /** Get leader by ID */
-    getLeader( id: string ): Promise<Leader> {
+    getLeader( id: string ): Observable<Leader> {
         return of( LEADERS .filter( ( leader ) => ( leader .id === id ) ) [ 0 ] )   // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                        // Simulate server latency with 2 second delay.
-                  .toPromise();                                                 // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                                           // Simulate server latency with 2 second delay.
     }
     /** Get only featured leaders */
-    getFeaturedLeader(): Promise<Leader> {
+    getFeaturedLeader(): Observable<Leader> {
         return of( LEADERS .filter( ( leader ) => leader .featured ) [ 0 ] )    // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) )                                    // Simulate server latency with 2 second delay.
-                  .toPromise();                                             // Convert observable to Promise.
+                  .pipe( delay( 2000 ) );                                       // Simulate server latency with 2 second delay.
     }
 }
