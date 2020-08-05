@@ -64,6 +64,9 @@
                             type="text"
                             required
                         >
+                        <mat-error *ngIf="formErrors .author">
+                            {{ formErrors .author }}
+                        </mat-error>
                     </mat-form-field>
                 </p>
                 <p>
@@ -82,10 +85,15 @@
                             rows=6
                             required
                         ></textarea>
+                        <mat-error *ngIf="formErrors .comment">
+                            {{ formErrors .comment }}
+                        </mat-error>
                     </mat-form-field>
                 </p>
                 <button mat-button
                     type="submit"
+                    [class]="( dishCommentForm .invalid ? 'background-secondary text-secondary' : 'background-primary text-floral-white' )"
+                    [disabled]="dishCommentForm .invalid"
                 >Submit</button>
 
             </form>
