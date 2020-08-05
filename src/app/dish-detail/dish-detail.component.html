@@ -51,11 +51,15 @@
                 </mat-list-item>
             </mat-list>
 
-            <form>
+            <form novalidate
+                #commentForm="ngForm"
+                [formGroup]="dishCommentForm"
+            >
 
                 <p>
                     <mat-form-field class="full-width">
                         <input matInput
+                            formControlName="author"
                             placeholder="Your Name"
                             type="text"
                             required
@@ -73,8 +77,10 @@
                 <p>
                     <mat-form-field class="full-width">
                         <textarea matInput
+                            formControlName="comment"
                             placeholder="Your Comment"
                             rows=6
+                            required
                         ></textarea>
                     </mat-form-field>
                 </p>

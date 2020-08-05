@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,8 +33,8 @@ export class DishDetailComponent implements OnInit {
     prev: string;
     next: string;
 
-    commentForm: FormGroup;
-    comment: Comment;
+    dishCommentForm: FormGroup;
+    dishComment: Comment;
 
     // It will contain the error messages to display for each field of the form defined here
     formErrors = {
@@ -52,6 +52,8 @@ export class DishDetailComponent implements OnInit {
         }
     };
 
+    @ViewChild( 'commentForm' ) dishCommentFormDirective;
+
     constructor(
         private dishService: DishService,
         private location: Location,
@@ -63,7 +65,7 @@ export class DishDetailComponent implements OnInit {
 
     createForm() {
         /** Define State Form (Add Form Validation) */
-        this .commentForm = this .fb .group({
+        this .dishCommentForm = this .fb .group({
             author: [ '', [
                 Validators .required,
                 Validators .minLength( 3 )
