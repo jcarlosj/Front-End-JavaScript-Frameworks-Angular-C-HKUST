@@ -40,7 +40,7 @@
 
         </div>
 
-        <div fxFlex="40" *ngIf="dish .comments .length > 0">
+        <div fxFlex="40" *ngIf="dish .comments" class="dish-comments">
 
             <h2>Comments</h2>
             <mat-list>
@@ -50,6 +50,39 @@
                     <div mat-line>-- {{ comment .author }} {{ comment .date | date }}</div>
                 </mat-list-item>
             </mat-list>
+
+            <form>
+
+                <p>
+                    <mat-form-field class="full-width">
+                        <input matInput
+                            placeholder="Your Name"
+                            type="text"
+                            required
+                        >
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-slider
+                        thumbLabel
+                        tickInterval="5"
+                        min="0"
+                        max="5">
+                    </mat-slider>
+                </p>
+                <p>
+                    <mat-form-field class="full-width">
+                        <textarea matInput
+                            placeholder="Your Comment"
+                            rows=6
+                        ></textarea>
+                    </mat-form-field>
+                </p>
+                <button mat-button
+                    type="submit"
+                >Submit</button>
+
+            </form>
 
         </div>
 
