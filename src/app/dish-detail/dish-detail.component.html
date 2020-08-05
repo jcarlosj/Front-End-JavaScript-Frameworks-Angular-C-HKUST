@@ -54,6 +54,7 @@
             <form novalidate
                 #commentForm="ngForm"
                 [formGroup]="dishCommentForm"
+                (ngSubmit)="onSubmit()"
             >
 
                 <p>

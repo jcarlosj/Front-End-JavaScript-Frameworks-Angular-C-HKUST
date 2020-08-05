@@ -154,4 +154,18 @@ export class DishDetailComponent implements OnInit {
         console .groupEnd();
     }
 
+    onSubmit() {
+        this .dishComment = this .dishCommentForm .value;
+        console .log( 'Sent', this .dishComment );
+
+        this .dishCommentForm .reset({
+            author: '',
+            comment: '',
+            date: '',
+            ranking: 0
+        });
+
+        this .dishCommentFormDirective .reset();
+    }
+
 }
