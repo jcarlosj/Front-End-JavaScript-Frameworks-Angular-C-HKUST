@@ -1,12 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /** ReactiveX Library */
 import { switchMap } from 'rxjs/operators';
 
 /** Models */
 import { Dish } from '../shared/Dish';
+import { Comment } from '../shared/Comment';
 
 /** Services */
 import { DishService } from '../services/dish.service';
@@ -31,11 +33,48 @@ export class DishDetailComponent implements OnInit {
     prev: string;
     next: string;
 
+    commentForm: FormGroup;
+    comment: Comment;
+
+    // It will contain the error messages to display for each field of the form defined here
+    formErrors = {
+        'author': '',
+        'comment': ''
+    };
+    // It will contain the messages for each type of expected error per form field
+    validationsMessages = {
+        'author': {
+            'required': 'Author name is required',
+            'minlength': 'Author name must be at least 3 characters long'
+        },
+        'comment': {
+            'required': 'Comment is required'
+        }
+    };
+
     constructor(
         private dishService: DishService,
         private location: Location,
-        private activatedRoute: ActivatedRoute
-    ) { }
+        private activatedRoute: ActivatedRoute,
+        private fb: FormBuilder
+    ) {
+        this .createForm();
+    }
+
+    createForm() {
+        /** Define State Form (Add Form Validation) */
+        this .commentForm = this .fb .group({
+            author: [ '', [
+                Validators .required,
+                Validators .minLength( 3 )
+            ] ],
+            comment: [ '', [
+                Validators .required
+            ] ],
+            date: '',
+            ranking: 0
+        });
+    }
 
     ngOnInit(): void {
         const
