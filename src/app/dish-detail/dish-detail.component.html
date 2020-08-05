@@ -49,6 +49,18 @@
                     <div mat-line>{{ comment .rating }} Starts</div>
                     <div mat-line>-- {{ comment .author }} {{ comment .date | date }}</div>
                 </mat-list-item>
+
+                <mat-list-item>
+                    <div mat-line *ngIf="dishCommentForm .controls .comment .status === 'VALID'">
+                        {{ dishCommentForm .value[ 'comment' ] }}
+                    </div>
+                    <div mat-line *ngIf="dishCommentForm .value[ 'rating' ] >= 0">
+                        {{ dishCommentForm .value[ 'rating' ] }} Starts
+                    </div>
+                    <div mat-line *ngIf="dishCommentForm .controls .author .status === 'VALID'">
+                        -- {{ dishCommentForm .value[ 'author' ] }} {{ dishCommentForm .value[ 'date' ] | date }}
+                    </div>
+                </mat-list-item>
             </mat-list>
 
             <form novalidate
@@ -56,6 +68,9 @@
                 [formGroup]="dishCommentForm"
                 (ngSubmit)="onSubmit()"
             >
+                <p><code>{{ dishCommentForm .value | json }} </code></p>
+                <p><code><b>author field: </b>{{ dishCommentForm .controls .author .status }} </code></p>
+                <p><code><b>dish form: </b>{{ dishCommentForm .invalid }} </code></p>
 
                 <p>
                     <mat-form-field class="full-width">
@@ -72,10 +87,13 @@
                 </p>
                 <p>
                     <mat-slider
+                        formControlName="rating"
                         thumbLabel
                         tickInterval="5"
                         min="0"
-                        max="5">
+                        max="5"
+                        [value]="defaultValue"
+                    >
                     </mat-slider>
                 </p>
                 <p>

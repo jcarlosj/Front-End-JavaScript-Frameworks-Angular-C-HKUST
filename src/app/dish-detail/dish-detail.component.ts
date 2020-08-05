@@ -33,6 +33,8 @@ export class DishDetailComponent implements OnInit {
     prev: string;
     next: string;
 
+    defaultValue: number = 0;
+
     dishCommentForm: FormGroup;
     dishComment: Comment;
 
@@ -64,6 +66,9 @@ export class DishDetailComponent implements OnInit {
     }
 
     createForm() {
+        const date = new Date();
+
+
         /** Define State Form (Add Form Validation) */
         this .dishCommentForm = this .fb .group({
             author: [ '', [
@@ -73,8 +78,8 @@ export class DishDetailComponent implements OnInit {
             comment: [ '', [
                 Validators .required
             ] ],
-            date: '',
-            ranking: 0
+            date: date .toISOString(),
+            rating: 0
         });
 
         /** Observable: Subscribe to the Angular Form observable named valueChanges */
@@ -156,13 +161,18 @@ export class DishDetailComponent implements OnInit {
 
     onSubmit() {
         this .dishComment = this .dishCommentForm .value;
+
+        console .log( 'this.dishCommentForm', this .dishCommentForm );
         console .log( 'Sent', this .dishComment );
+
+        this .dish .comments .push( this .dishComment );    // Add Comment
+        this .defaultValue = 5;
 
         this .dishCommentForm .reset({
             author: '',
             comment: '',
             date: '',
-            ranking: 0
+            rating: this .defaultValue
         });
 
         this .dishCommentFormDirective .reset();
