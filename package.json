@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch ./server/db.json -d 2000"
+    "json:server": "node ./server/index.js"
   },
   "private": true,
   "dependencies": {
