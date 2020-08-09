@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
 
     /** Atributes */
     dishes: Dish[];
-    selectedDish: Dish;
 
     constructor( private dishService: DishService ) { }
 
@@ -23,10 +22,6 @@ export class MenuComponent implements OnInit {
         /** Receive a Observable */
         this .dishService .getDishes()
              .subscribe( dishes => this .dishes = dishes );
-    }
-
-    onSelect( dish: Dish ) {
-        this .selectedDish = dish;
     }
 
 }

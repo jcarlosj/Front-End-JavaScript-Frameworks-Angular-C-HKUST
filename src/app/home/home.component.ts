@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 /** Models */
 import { Dish } from '../shared/Dish';
@@ -24,8 +24,11 @@ export class HomeComponent implements OnInit {
     constructor(
         private dishService: DishService,
         private promotionService: PromotionService,
-        private leaderService: LeaderService
-    ) { }
+        private leaderService: LeaderService,
+        @Inject( 'BaseURL' ) public BaseURL            // Mechanism for letting Angular know that a parameter must be injected
+    ) {
+        console .log( 'BaseURL', this .BaseURL );
+    }
 
     ngOnInit() {
         /** Receive a Observable */
