@@ -6,8 +6,10 @@ const
     server = jsonServer .create(),
     router = jsonServer .router( data() ),
     //middlewares = jsonServer .defaults(),
+    cors = require( 'cors' ),
     port = 5000;      // Important configure the same port
 
+server .use( cors() );
 server .use( express .static( path .join( __dirname, 'public' ) ) );
 //server .use( middlewares );
 server .use( router );
