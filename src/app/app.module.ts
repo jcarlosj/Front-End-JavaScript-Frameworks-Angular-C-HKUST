@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 /** Dependencies */
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -42,6 +43,9 @@ import { LeaderService } from './services/leader.service';
 /** Routing */
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
+/** Base URL - BackEnd Server (It is a recommended practice) */
+import { BASE_URL } from './shared/baseurl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +65,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     HammerModule,
     FlexLayoutModule,
     MatToolbarModule,
@@ -83,7 +88,11 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   ],
   providers: [
     DishService,
-    LeaderService
+    LeaderService,
+    {
+        provide: 'BaseURL',
+        useValue: BASE_URL
+    }
   ],
   bootstrap: [AppComponent]
 })

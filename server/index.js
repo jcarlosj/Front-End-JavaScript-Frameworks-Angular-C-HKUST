@@ -6,7 +6,7 @@ const
     server = jsonServer .create(),
     router = jsonServer .router( data() ),
     //middlewares = jsonServer .defaults(),
-    port = 5000;
+    port = 5000;      // Important configure the same port
 
 server .use( express .static( path .join( __dirname, 'public' ) ) );
 //server .use( middlewares );
