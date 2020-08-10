@@ -120,11 +120,19 @@
         </div>
 
     </div>
+
     <div fxFlex
-        [hidden]="dish"
+        [hidden]="dish || errorMessage"
     >
         <mat-spinner class="spinner"></mat-spinner>
         <h4 class="spinner-text">Loading Dish detail...</h4>
+    </div>
+
+    <div fxFlex
+        *ngIf="errorMessage"
+    >
+        <h2 class="error">Error</h2>
+        <p class="error-text">{{ errorMessage }}</p>
     </div>
 
 </div>

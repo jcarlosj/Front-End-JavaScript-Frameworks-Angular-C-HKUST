@@ -47,8 +47,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1 1 auto;
 }
 
-.spinner {
+.spinner,
+.error {
     margin: 0 auto;
+    text-align: center;
 
     &-text {
         text-align: center;

@@ -15,13 +15,17 @@ export class MenuComponent implements OnInit {
 
     /** Atributes */
     dishes: Dish[];
+    errorMessage: string;
 
     constructor( private dishService: DishService ) { }
 
     ngOnInit(): void {
         /** Receive a Observable */
         this .dishService .getDishes()
-             .subscribe( dishes => this .dishes = dishes );
+             .subscribe(    // Subscription to the Observable receives two callbacks, the data obtained, the error messages
+                  dishes => this .dishes = dishes,
+                  error => this .errorMessage = <any>error
+              );
     }
 
 }

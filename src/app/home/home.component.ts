@@ -18,6 +18,7 @@ import { LeaderService } from '../services/leader.service';
 export class HomeComponent implements OnInit {
     /** Atributes */
     dish: Dish;
+    dishErrorMessage: string;
     promotion: Promotion;
     leader: Leader;
 
@@ -33,7 +34,10 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         /** Receive a Observable */
         this .dishService .getFeaturedDish()
-             .subscribe( dish => this .dish = dish );
+             .subscribe(    // Subscription to the Observable receives two callbacks, the data obtained, the error messages
+                  dish => this .dish = dish,
+                  error => this .dishErrorMessage = <any>error
+              );
         /** Receive a Observable */
         this .promotionService .getFeaturedPromotion()
              .subscribe( promotion => this .promotion = promotion );

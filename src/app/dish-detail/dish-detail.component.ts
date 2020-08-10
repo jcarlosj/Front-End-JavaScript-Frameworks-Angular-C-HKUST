@@ -29,6 +29,7 @@ export class DishDetailComponent implements OnInit {
 
     /** Attributes */
     dish: Dish;
+    errorMessage: string;
     dishIDs: string[];
     prev: string;
     next: string;
@@ -131,10 +132,13 @@ export class DishDetailComponent implements OnInit {
               .pipe(
                   switchMap( ( params: Params ) => this .dishService .getDish( params[ 'id' ] ) )   // switchMap: Projects each source value to an Observable which is merged in the output Observable, emitting values only from the most recently projected Observable.
               )
-              .subscribe( dish => {
-                  this .dish = dish;
-                  this .setPrevNext( dish .id );
-              });
+              .subscribe(     // Subscription to the Observable receives two callbacks, the data obtained, the error messages
+                  dish => {
+                    this .dish = dish;
+                    this .setPrevNext( dish .id );
+                  },
+                  error => this .errorMessage = <any>error
+              );
 
         /** Receive a Observable */
         this .dishService .getDishIDs()
