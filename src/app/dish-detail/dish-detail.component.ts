@@ -30,6 +30,7 @@ export class DishDetailComponent implements OnInit {
     /** Attributes */
     dish: Dish;
     errorMessage: string;
+    dishCopy: Dish;
     dishIDs: string[];
     prev: string;
     next: string;
@@ -135,6 +136,7 @@ export class DishDetailComponent implements OnInit {
               .subscribe(     // Subscription to the Observable receives two callbacks, the data obtained, the error messages
                   dish => {
                     this .dish = dish;
+                    this .dishCopy = dish;
                     this .setPrevNext( dish .id );
                   },
                   error => this .errorMessage = <any>error
@@ -169,7 +171,20 @@ export class DishDetailComponent implements OnInit {
         console .log( 'this.dishCommentForm', this .dishCommentForm );
         console .log( 'Sent', this .dishComment );
 
-        this .dish .comments .push( this .dishComment );    // Add Comment
+        this .dishCopy .comments .push( this .dishComment );    // Add Comment
+        this .dishService .putDish( this .dishCopy )            // Submit modifications
+             .subscribe(
+                  dish => {
+                      this .dish = dish;
+                      this .dishCopy = dish;
+                  },
+                  error => {
+                      this .dish = null;
+                      this .dishCopy = null;
+                      this .errorMessage = <any>error
+                  }
+             );
+
         this .defaultValue = 5;
 
         this .dishCommentForm .reset({

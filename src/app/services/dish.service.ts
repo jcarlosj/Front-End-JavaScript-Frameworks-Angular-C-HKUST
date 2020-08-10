@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 /** Base URL - BackEnd Server (It is a recommended practice) */
 import { BASE_URL } from '../shared/baseurl';
@@ -52,6 +52,18 @@ export class DishService {
                     .pipe(
                         map( dishes => dishes[ 0 ] )
                     )
+                    .pipe( catchError( this .processHttpMessageService .handleError ) );  // Handle the error and extract the message
+    }
+
+    /** Modify a dish */
+    putDish( dish: Dish ): Observable< Dish > {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json'
+            })
+        };
+
+        return this .http .put< Dish >( `${ BASE_URL }dishes/${ dish .id }`, dish, httpOptions )
                     .pipe( catchError( this .processHttpMessageService .handleError ) );  // Handle the error and extract the message
     }
 }

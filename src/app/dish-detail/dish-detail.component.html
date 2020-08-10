@@ -54,7 +54,7 @@
                     <div mat-line *ngIf="dishCommentForm .controls .comment .status === 'VALID'">
                         {{ dishCommentForm .value[ 'comment' ] }}
                     </div>
-                    <div mat-line *ngIf="dishCommentForm .value[ 'rating' ] >= 0">
+                    <div mat-line *ngIf="dishCommentForm .value[ 'rating' ] > 0">
                         {{ dishCommentForm .value[ 'rating' ] }} Starts
                     </div>
                     <div mat-line *ngIf="dishCommentForm .controls .author .status === 'VALID'">
