@@ -8,10 +8,21 @@ import { Feedback, ContactType } from '../shared/Feedback';
 import { faPhone, faFax, faEnvelope as faEnvelopeS } from '@fortawesome/free-solid-svg-icons';
 import { faSkype } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+
+/** Animations */
+import { flyInOut } from '../animations/app.animation';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  host: {   // Maps class properties to host element bindings for properties, attributes, and events, using a set of key-value pairs.
+      '[@flyInOut]': 'true',
+      'style': 'display: block;'
+  },
+  animations: [
+      flyInOut()
+  ]
 })
 export class ContactComponent implements OnInit {
 

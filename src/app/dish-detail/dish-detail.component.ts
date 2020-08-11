@@ -17,14 +17,19 @@ import { DishService } from '../services/dish.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 /** Animations */
-import { visibility } from '../animations/app.animation';
+import { visibility, flyInOut } from '../animations/app.animation';
 
 @Component({
     selector: 'app-dish-detail',
     templateUrl: './dish-detail.component.html',
     styleUrls: ['./dish-detail.component.scss'],
+    host: {   // Maps class properties to host element bindings for properties, attributes, and events, using a set of key-value pairs.
+        '[ @flyInOut ]': 'true',
+        'style': 'display: block;'
+    },
     animations: [
-        visibility()
+        visibility(),
+        flyInOut()
     ]
 })
 export class DishDetailComponent implements OnInit {

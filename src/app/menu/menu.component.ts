@@ -6,10 +6,20 @@ import { Dish } from '../shared/Dish';
 /** Service */
 import { DishService } from '../services/dish.service';
 
+/** Animations */
+import { flyInOut } from '../animations/app.animation';
+
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss'],
+    host: {   // Maps class properties to host element bindings for properties, attributes, and events, using a set of key-value pairs.
+        '[@flyInOut]': 'true',
+        'style': 'display: block;'
+    },
+    animations: [
+        flyInOut()
+    ]
 })
 export class MenuComponent implements OnInit {
 

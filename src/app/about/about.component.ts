@@ -6,10 +6,20 @@ import { Leader } from '../shared/Leader';
 /** Services */
 import { LeaderService } from '../services/leader.service';
 
+/** Animations */
+import { flyInOut } from '../animations/app.animation';
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
+  host: {   // Maps class properties to host element bindings for properties, attributes, and events, using a set of key-value pairs.
+      '[@flyInOut]': 'true',
+      'style': 'display: block;'
+  },
+  animations: [
+      flyInOut()
+  ]
 })
 export class AboutComponent implements OnInit {
     /** Attributes */

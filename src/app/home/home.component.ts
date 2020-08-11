@@ -10,10 +10,20 @@ import { DishService } from '../services/dish.service';
 import { PromotionService } from '../services/promotion.service';
 import { LeaderService } from '../services/leader.service';
 
+/** Animations */
+import { flyInOut } from '../animations/app.animation';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  host: {   // Maps class properties to host element bindings for properties, attributes, and events, using a set of key-value pairs.
+      '[@flyInOut]': 'true',
+      'style': 'display: block;'
+  },
+  animations: [
+      flyInOut()
+  ]
 })
 export class HomeComponent implements OnInit {
     /** Atributes */
