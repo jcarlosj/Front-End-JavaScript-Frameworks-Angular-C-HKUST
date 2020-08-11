@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { trigger, state, style, animate, transition } from '@angular/animations';    // Supports Animation
 
 /** ReactiveX Library */
 import { switchMap } from 'rxjs/operators';
@@ -17,9 +18,35 @@ import { DishService } from '../services/dish.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-dish-detail',
-  templateUrl: './dish-detail.component.html',
-  styleUrls: ['./dish-detail.component.scss']
+    selector: 'app-dish-detail',
+    templateUrl: './dish-detail.component.html',
+    styleUrls: ['./dish-detail.component.scss'],
+    animations: [
+        trigger(
+            'visibility',           // Trigger name
+            [   /** Define States */
+                state(
+                    'shown',        // State name
+                    style({         // Applied Style
+                        transform: 'scale( 1.0 )',
+                        opacity: 1
+                    })
+                ),
+                state(
+                    'hidden',       // State name
+                    style({         // Applied Style
+                        transform: 'scale( 0.5 )',
+                        opacity: 0
+                    })
+                ),
+                /** Define Transitions */
+                transition(
+                    '* => *',       // Type of transition (any state to any state)
+                    animate( '0.5s ease-in-out' )
+                )
+            ]
+        )
+    ]
 })
 export class DishDetailComponent implements OnInit {
 
@@ -39,6 +66,8 @@ export class DishDetailComponent implements OnInit {
 
     dishCommentForm: FormGroup;
     dishComment: Comment;
+
+    visibilityStatus = 'shown';    // Initialize trigger state
 
     // It will contain the error messages to display for each field of the form defined here
     formErrors = {
@@ -131,10 +160,14 @@ export class DishDetailComponent implements OnInit {
         const
             id = this .activatedRoute .params
               .pipe(
-                  switchMap( ( params: Params ) => this .dishService .getDish( params[ 'id' ] ) )   // switchMap: Projects each source value to an Observable which is merged in the output Observable, emitting values only from the most recently projected Observable.
+                  switchMap( ( params: Params ) => {
+                      this .visibilityStatus = 'hidden';      // Change the trigger state
+                      return this .dishService .getDish( params[ 'id' ] );   // switchMap: Projects each source value to an Observable which is merged in the output Observable, emitting values only from the most recently projected Observable.
+                  })
               )
               .subscribe(     // Subscription to the Observable receives two callbacks, the data obtained, the error messages
                   dish => {
+                    this .visibilityStatus = 'shown';         // Change the trigger state
                     this .dish = dish;
                     this .dishCopy = dish;
                     this .setPrevNext( dish .id );
