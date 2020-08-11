@@ -56,3 +56,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         text-align: center;
     }
 }
+
+.highlight {
+    background-color: $background-pale;
+    border: 1px solid $primary-color-dark;
+    transform: scale( 1.01 );
+    z-index: 1;
+}
