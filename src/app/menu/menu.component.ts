@@ -7,7 +7,7 @@ import { Dish } from '../shared/Dish';
 import { DishService } from '../services/dish.service';
 
 /** Animations */
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
 
 @Component({
     selector: 'app-menu',
@@ -18,7 +18,8 @@ import { flyInOut } from '../animations/app.animation';
         'style': 'display: block;'
     },
     animations: [
-        flyInOut()
+        flyInOut(),
+        expand()
     ]
 })
 export class MenuComponent implements OnInit {

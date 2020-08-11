@@ -7,7 +7,7 @@ import { Leader } from '../shared/Leader';
 import { LeaderService } from '../services/leader.service';
 
 /** Animations */
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
 
 @Component({
   selector: 'app-about',
@@ -18,7 +18,8 @@ import { flyInOut } from '../animations/app.animation';
       'style': 'display: block;'
   },
   animations: [
-      flyInOut()
+      flyInOut(),
+      expand()
   ]
 })
 export class AboutComponent implements OnInit {

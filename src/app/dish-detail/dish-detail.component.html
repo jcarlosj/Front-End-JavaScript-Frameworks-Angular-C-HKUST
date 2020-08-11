@@ -12,6 +12,7 @@
 
         <div fxFlex="40"
             [@visibility]="visibilityStatus"
+            [@expand]
         >
             <mat-card>
 
@@ -47,6 +48,7 @@
         <div fxFlex="40"
             *ngIf="dish .comments" class="dish-comments"
             [@visibility]="visibilityStatus"
+            [@expand]
         >
 
             <h2>Comments</h2>

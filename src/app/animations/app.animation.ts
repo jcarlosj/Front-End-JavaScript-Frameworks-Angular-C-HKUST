@@ -25,7 +25,7 @@ export function visibility() {
                 animate( '0.5s ease-in-out' )
             )
         ]
-    )
+    );
 }
 
 /** Adding Animation Support for Route Changes */
@@ -62,5 +62,37 @@ export function flyInOut() {
                 ]
             )
         ]
-    )
+    );
+}
+
+export function expand() {
+    return trigger(
+        'expand',               // Trigger name
+        [   /** Define States */
+            state(
+                '*',            // State name
+                style({         // Applied Style
+                    opacity: 1,
+                    transform: 'translateX( 0 )'
+                })
+            ),
+            /** Define Transitions */
+            transition(
+                ':enter',       // Type of transition :enter (Equals void => *)
+                [   // Applied Style
+                    style({
+                        opacity: 0,
+                        transform: 'translateY( -50% )'
+                    }),
+                    animate(
+                        '200ms ease-in',
+                        style({         // Applied Style
+                            opacity: 1,
+                            transform: 'translateX( 0 )'
+                        })
+                    )
+                ]
+            )
+        ]
+    );
 }

@@ -17,7 +17,7 @@ import { DishService } from '../services/dish.service';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 /** Animations */
-import { visibility, flyInOut } from '../animations/app.animation';
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 
 @Component({
     selector: 'app-dish-detail',
@@ -29,7 +29,8 @@ import { visibility, flyInOut } from '../animations/app.animation';
     },
     animations: [
         visibility(),
-        flyInOut()
+        flyInOut(),
+        expand()
     ]
 })
 export class DishDetailComponent implements OnInit {
