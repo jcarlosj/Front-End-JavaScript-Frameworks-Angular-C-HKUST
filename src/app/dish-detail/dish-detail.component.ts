@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { trigger, state, style, animate, transition } from '@angular/animations';    // Supports Animation
 
 /** ReactiveX Library */
 import { switchMap } from 'rxjs/operators';
@@ -17,35 +16,15 @@ import { DishService } from '../services/dish.service';
 /** Dependencies */
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+/** Animations */
+import { visibility } from '../animations/app.animation';
+
 @Component({
     selector: 'app-dish-detail',
     templateUrl: './dish-detail.component.html',
     styleUrls: ['./dish-detail.component.scss'],
     animations: [
-        trigger(
-            'visibility',           // Trigger name
-            [   /** Define States */
-                state(
-                    'shown',        // State name
-                    style({         // Applied Style
-                        transform: 'scale( 1.0 )',
-                        opacity: 1
-                    })
-                ),
-                state(
-                    'hidden',       // State name
-                    style({         // Applied Style
-                        transform: 'scale( 0.5 )',
-                        opacity: 0
-                    })
-                ),
-                /** Define Transitions */
-                transition(
-                    '* => *',       // Type of transition (any state to any state)
-                    animate( '0.5s ease-in-out' )
-                )
-            ]
-        )
+        visibility()
     ]
 })
 export class DishDetailComponent implements OnInit {
