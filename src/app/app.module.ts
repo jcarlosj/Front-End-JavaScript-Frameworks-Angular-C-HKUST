@@ -44,6 +44,9 @@ import { ProcessHttpMessageService } from './services/process-http-message.servi
 /** Routing */
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
+/** Directives */
+import { HighlightDirective } from './directives/highlight.directive';
+
 /** Base URL - BackEnd Server (It is a recommended practice) */
 import { BASE_URL } from './shared/baseurl';
 
@@ -58,7 +61,8 @@ import { BASE_URL } from './shared/baseurl';
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
