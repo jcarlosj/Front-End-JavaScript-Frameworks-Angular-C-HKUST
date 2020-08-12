@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     dish: Dish;
     dishErrorMessage: string;
     promotion: Promotion;
+    promotionErrorMessage: string;
     leader: Leader;
 
     constructor(
@@ -51,7 +52,10 @@ export class HomeComponent implements OnInit {
               );
         /** Receive a Observable */
         this .promotionService .getFeaturedPromotion()
-             .subscribe( promotion => this .promotion = promotion );
+             .subscribe(
+                  promotion => this .promotion = promotion,
+                  error => this  .promotionErrorMessage =<any>error
+              );
         /** Receive a Observable */
         this .leaderService .getFeaturedLeader()
              .subscribe( leader => this .leader = leader );

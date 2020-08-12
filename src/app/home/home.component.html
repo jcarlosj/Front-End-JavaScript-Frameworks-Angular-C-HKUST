@@ -50,9 +50,15 @@
             </p>
         </mat-card-content>
     </mat-card>
-    <div [hidden]="promotion" fxFlex>
+    <div [hidden]="promotion || promotionErrorMessage" fxFlex>
         <mat-spinner class="spinner"></mat-spinner>
         <h4 class="spinner-text">Loading...</h4>
+    </div>
+    <div fxFlex
+        *ngIf="promotionErrorMessage"
+    >
+        <h2 class="error">Error</h2>
+        <p class="error-text">{{ promotionErrorMessage }}</p>
     </div>
 
     <mat-card
