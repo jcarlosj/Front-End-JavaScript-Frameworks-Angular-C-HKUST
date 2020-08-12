@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 /** Models */
 import { Feedback, ContactType } from '../shared/Feedback';
 
+/** Services */
+import { FeedbackService } from '../services/feedback.service';
+
 /** Dependencies */
 import { faPhone, faFax, faEnvelope as faEnvelopeS } from '@fortawesome/free-solid-svg-icons';
 import { faSkype } from '@fortawesome/free-brands-svg-icons';
@@ -36,6 +39,7 @@ export class ContactComponent implements OnInit {
     /** Attributes */
     feedBackForm: FormGroup;
     feedBack: Feedback;
+    feedBackErrorMessage: string;
 
     contactType = ContactType;
     // It will contain the error messages to display for each field of the form defined here
@@ -71,7 +75,10 @@ export class ContactComponent implements OnInit {
 
     @ViewChild( 'contactForm' ) feedBackFormDirective;
 
-    constructor( private fb: FormBuilder ) {
+    constructor(
+        private fb: FormBuilder,
+        private feedbackService: FeedbackService
+    ) {
         this .createForm();
     }
 
@@ -102,9 +109,8 @@ export class ContactComponent implements OnInit {
                 Validators .email
             ] ],
             agree: false,
-            contactType: '',
-            message: '',
-            contacttype: 'None'
+            contactType: 'None',
+            message: ''
         });
 
         /** Observable: Subscribe to the Angular Form observable named valueChanges */
@@ -151,9 +157,20 @@ export class ContactComponent implements OnInit {
         console .log( 'this.formErrors', this .formErrors );
     }
 
-    onSubmit() {
+    submitFeedback() {
         this .feedBack = this .feedBackForm .value;
         console .log( 'Sent', this .feedBack );
+
+        this .feedbackService .postFeedback( this .feedBack )
+              .subscribe(
+                  feedback => {
+                      console .log( 'POST Request is successful ', feedback );
+                  },
+                  error => {
+                      this .feedBack = null;
+                      this .feedBackErrorMessage = <any>error
+                  }
+              );
 
         this .feedBackForm .reset({
             firstName: '',
@@ -161,9 +178,8 @@ export class ContactComponent implements OnInit {
             phoneNumber: 0,
             email: '',
             agree: false,
-            contactType: '',
-            message: '',
-            contacttype: 'None'
+            contactType: 'None',
+            message: ''
         });
 
         this .feedBackFormDirective .reset();

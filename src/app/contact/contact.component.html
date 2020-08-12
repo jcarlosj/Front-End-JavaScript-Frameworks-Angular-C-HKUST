@@ -44,13 +44,13 @@
         <form novalidate
             [formGroup]="feedBackForm"
             #contactForm="ngForm"
-            (ngSubmit)="onSubmit()"
+            (ngSubmit)="submitFeedback()"
         >
             <p>
                 <mat-form-field class="half-width">
                     <input matInput
                         formControlName="firstName"
-                        placeholder="First Name"
+               c         placeholder="First Name"
                         type="text"
                         required
                     >
@@ -101,7 +101,7 @@
                 <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
             </td>
             <td>
-                <mat-select placeholder="How?" formControlName="contacttype">
+                <mat-select placeholder="How?" formControlName="contactType">
                     <mat-option *ngFor="let ctype of contactType" [value]="ctype">
                         {{ ctype }}
                     </mat-option>

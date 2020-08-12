@@ -40,6 +40,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DishService } from './services/dish.service';
 import { LeaderService } from './services/leader.service';
 import { ProcessHttpMessageService } from './services/process-http-message.service';
+import { FeedbackService } from './services/feedback.service';
 
 /** Routing */
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -98,7 +99,8 @@ import { BASE_URL } from './shared/baseurl';
         provide: 'BaseURL',
         useValue: BASE_URL
     },
-    ProcessHttpMessageService
+    ProcessHttpMessageService,
+    FeedbackService
   ],
   bootstrap: [AppComponent]
 })
