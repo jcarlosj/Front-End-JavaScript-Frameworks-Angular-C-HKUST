@@ -78,9 +78,16 @@
             </p>
         </mat-card-content>
     </mat-card>
-    <div [hidden]="leader" fxFlex>
+    <div [hidden]="leader || leaderErrorMessage" fxFlex>
         <mat-spinner class="spinner"></mat-spinner>
         <h4 class="spinner-text">Loading...</h4>
     </div>
+    <div fxFlex
+        *ngIf="leaderErrorMessage"
+    >
+        <h2 class="error">Error</h2>
+        <p class="error-text">{{ leaderErrorMessage }}</p>
+    </div>
+
 
 </div>

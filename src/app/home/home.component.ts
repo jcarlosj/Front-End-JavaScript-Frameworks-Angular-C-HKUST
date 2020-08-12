@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     promotion: Promotion;
     promotionErrorMessage: string;
     leader: Leader;
+    leaderErrorMessage: string;
 
     constructor(
         private dishService: DishService,
@@ -52,13 +53,16 @@ export class HomeComponent implements OnInit {
               );
         /** Receive a Observable */
         this .promotionService .getFeaturedPromotion()
-             .subscribe(
+             .subscribe(    // Subscription to the Observable receives two callbacks, the data obtained, the error messages
                   promotion => this .promotion = promotion,
                   error => this  .promotionErrorMessage =<any>error
               );
         /** Receive a Observable */
         this .leaderService .getFeaturedLeader()
-             .subscribe( leader => this .leader = leader );
+             .subscribe(    // Subscription to the Observable receives two callbacks, the data obtained, the error messages
+                  leader => this .leader = leader,
+                  error => this .leaderErrorMessage = <any>error
+              );
     }
 
 }
