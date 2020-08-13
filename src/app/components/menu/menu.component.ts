@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 /** Models */
-import { Dish } from '../shared/Dish';
+import { Dish } from '../../shared/Dish';
 
 /** Service */
-import { DishService } from '../services/dish.service';
+import { DishService } from '../../services/dish.service';
 
 /** Animations */
-import { flyInOut, expand } from '../animations/app.animation';
+import { flyInOut, expand } from '../../animations/app.animation';
 
 @Component({
     selector: 'app-menu',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 /** Animations */
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-page-not-found',

@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /** Models */
-import { Feedback, ContactType } from '../shared/Feedback';
+import { Feedback, ContactType } from '../../shared/Feedback';
 
 /** Services */
-import { FeedbackService } from '../services/feedback.service';
+import { FeedbackService } from '../../services/feedback.service';
 
 /** Dependencies */
 import { faPhone, faFax, faEnvelope as faEnvelopeS } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ import { faSkype } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 /** Animations */
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-contact',

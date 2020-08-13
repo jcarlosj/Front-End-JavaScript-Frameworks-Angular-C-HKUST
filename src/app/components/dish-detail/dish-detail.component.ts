@@ -7,17 +7,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
 
 /** Models */
-import { Dish } from '../shared/Dish';
-import { Comment } from '../shared/Comment';
+import { Dish } from '../../shared/Dish';
+import { Comment } from '../../shared/Comment';
 
 /** Services */
-import { DishService } from '../services/dish.service';
+import { DishService } from '../../services/dish.service';
 
 /** Dependencies */
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 /** Animations */
-import { visibility, flyInOut, expand } from '../animations/app.animation';
+import { visibility, flyInOut, expand } from '../../animations/app.animation';
 
 @Component({
     selector: 'app-dish-detail',

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 /** Models */
-import { Leader } from '../shared/Leader';
+import { Leader } from '../../shared/Leader';
 
 /** Services */
-import { LeaderService } from '../services/leader.service';
+import { LeaderService } from '../../services/leader.service';
 
 /** Animations */
-import { flyInOut, expand } from '../animations/app.animation';
+import { flyInOut, expand } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-about',

@@ -1,17 +1,17 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 /** Models */
-import { Dish } from '../shared/Dish';
-import { Promotion } from '../shared/Promotion';
-import { Leader } from '../shared/Leader';
+import { Dish } from '../../shared/Dish';
+import { Promotion } from '../../shared/Promotion';
+import { Leader } from '../../shared/Leader';
 
 /** Services */
-import { DishService } from '../services/dish.service';
-import { PromotionService } from '../services/promotion.service';
-import { LeaderService } from '../services/leader.service';
+import { DishService } from '../../services/dish.service';
+import { PromotionService } from '../../services/promotion.service';
+import { LeaderService } from '../../services/leader.service';
 
 /** Animations */
-import { flyInOut, expand } from '../animations/app.animation';
+import { flyInOut, expand } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-home',
