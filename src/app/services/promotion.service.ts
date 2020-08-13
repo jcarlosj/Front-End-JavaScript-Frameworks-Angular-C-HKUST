@@ -14,9 +14,6 @@ import { Promotion } from '../shared/Promotion';
 /** Services */
 import { ProcessHttpMessageService } from '../services/process-http-message.service';
 
-/** Static Data */
-import { PROMOTIONS } from '../shared/promotions';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,13 +26,13 @@ export class PromotionService {
 
     /** Get all the promotions */
     getPromotions(): Observable<Promotion[]> {
-        return of( PROMOTIONS )                 // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) );       // Simulate server latency with 2 second delay.
+      return this .http .get< Promotion[] >( `${ BASE_URL }promotions` )                // Returns an observable that contains an Array with Objects of Type Promotion
+                  .pipe( catchError( this .processHttpMessageService .handleError ) );  // Handle the error and extract the message
     }
     /** Get promotion by ID */
     getPromotion( id: string ): Observable<Promotion> {
-        return of( PROMOTIONS .filter( ( promotion ) => ( promotion .id === id ) ) [ 0 ] )  // Create an Observable: Converts the arguments to an observable sequence.
-                  .pipe( delay( 2000 ) );                                                   // Simulate server latency with 2 second delay.
+      return this .http .get< Promotion >( `${ BASE_URL }promotions/${ id }` )          // Returns an observable that contains an Object of Type Promotion
+                  .pipe( catchError( this .processHttpMessageService .handleError ) );  // Handle the error and extract the message
     }
     /** Get only featured promotions */
     getFeaturedPromotion(): Observable<Promotion> {
