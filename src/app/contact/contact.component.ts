@@ -37,9 +37,14 @@ export class ContactComponent implements OnInit {
     faEnvelope = faEnvelope;
 
     /** Attributes */
-    feedBackForm: FormGroup;
     feedBack: Feedback;
-    feedBackErrorMessage: string;
+    feedBackForm: FormGroup;
+    formStatus: Object = {
+        sent: false,
+        dataSent: null,
+        hasError: false,
+        errorMessage: null
+    };
 
     contactType = ContactType;
     // It will contain the error messages to display for each field of the form defined here
@@ -80,6 +85,7 @@ export class ContactComponent implements OnInit {
         private feedbackService: FeedbackService
     ) {
         this .createForm();
+        console .log( 'this.formStatus', this .formStatus );
     }
 
     ngOnInit(): void {
@@ -143,7 +149,7 @@ export class ContactComponent implements OnInit {
                 // Validate if it has a value, if the value of the field has changed, if the value is not valid
                 if( control && control .dirty && !control .valid ) {
                     const messages = this .validationsMessages[ field ];     // Assign error message to the respective field
-                    console .log( 'messages', messages );
+                    // console .log( 'messages', messages );
 
                     for( const key in control .errors ) {
                         if( control .errors .hasOwnProperty( key ) ) {
@@ -154,23 +160,46 @@ export class ContactComponent implements OnInit {
             }
         }
 
-        console .log( 'this.formErrors', this .formErrors );
+        //console .log( 'this.formErrors', this .formErrors );
     }
 
     submitFeedback() {
+        this .formStatus[ 'sent' ] = true;
         this .feedBack = this .feedBackForm .value;
-        console .log( 'Sent', this .feedBack );
+        //console .log( 'Sent', this .feedBack );
 
-        this .feedbackService .postFeedback( this .feedBack )
-              .subscribe(
-                  feedback => {
-                      console .log( 'POST Request is successful ', feedback );
-                  },
-                  error => {
-                      this .feedBack = null;
-                      this .feedBackErrorMessage = <any>error
-                  }
-              );
+        setTimeout( () => {
+
+            this .feedbackService .postFeedback( this .feedBack )
+                .subscribe(
+                    feedback => {
+                        console .log( 'POST Request is successful ', this .feedBack );
+                        this .formStatus[ 'dataSent' ] = this .feedBack;
+
+                        setTimeout( () => {
+                            this .formStatus[ 'sent' ] = false;
+                            this .formStatus[ 'hasError' ] = false;
+                            this .formStatus[ 'dataSent' ] = null;
+                        }, 2500 );
+
+                    },
+                    error => {
+                        this .feedBack = null;
+                        this .formStatus[ 'hasError' ] = true;
+                        this .formStatus[ 'errorMessage' ] = <any>error;
+
+                        if( this .formStatus[ 'hasError' ] ) {
+                            setTimeout( () => {
+                                this .formStatus[ 'sent' ] = false;
+                                this .formStatus[ 'hasError' ] = false;
+                            }, 2500 );
+                        }
+                    }
+                );
+
+        }, 2500 );
+
+        // console .log( 'formStatus', this .formStatus );
 
         this .feedBackForm .reset({
             firstName: '',

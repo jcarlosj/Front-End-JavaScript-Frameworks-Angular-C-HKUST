@@ -37,14 +37,16 @@
     </div>
 
     <div fxFlex fxFlexOffset="20px" class="form-size">
-        <h3>Send us your Feedback</h3>
+        <h2>Send us your Feedback</h2>
         <p><code>{{ feedBackForm.value | json }} </code></p>
         <p><code>{{ feedBackForm.status | json }}</code></p>
+        <p><code>{{ formStatus | json }}</code></p>
 
         <form novalidate
             [formGroup]="feedBackForm"
             #contactForm="ngForm"
             (ngSubmit)="submitFeedback()"
+            *ngIf="! formStatus[ 'sent' ] && ! formStatus[ 'hasError' ] && ! formStatus[ 'dataSent' ]"
         >
             <p>
                 <mat-form-field class="half-width">
@@ -97,9 +99,9 @@
                 </mat-form-field>
             </p>
             <table class="form-size">
-            <td>
-                <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
-            </td>
+                <td>
+                    <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
+                </td>
             <td>
                 <mat-select placeholder="How?" formControlName="contactType">
                     <mat-option *ngFor="let ctype of contactType" [value]="ctype">
@@ -123,6 +125,37 @@
                 [disabled]="feedBackForm .invalid"
             >Submit</button>
         </form>
+    </div>
+    <div fxFlex
+         fxFlexOffset="20px"
+         class="form-size"
+         [hidden]="! formStatus[ 'sent' ] || formStatus[ 'hasError' ] || formStatus[ 'dataSent' ]"
+    >
+        <mat-spinner class="spinner"></mat-spinner>
+        <h4 class="spinner-text">Sending...</h4>
+    </div>
+    <div fxFlex
+         fxFlexOffset="20px"
+         class="form-size"
+         *ngIf="formStatus[ 'sent' ] && formStatus[ 'hasError' ] && formStatus[ 'errorMessage' ]"
+    >
+        <h2 class="error">Error</h2>
+        <p class="error-text">{{ formStatus[ 'errorMessage' ] }}</p>
+    </div>
+    <div fxFlex
+        fxFlexOffset="20px"
+        class="form-size"
+        *ngIf="formStatus[ 'dataSent' ]"
+    >
+      <h2>Your Submission</h2>
+
+      <p><b>First Name: </b>{{ formStatus[ 'dataSent' ][ 'firstName' ] }}</p>
+      <p><b>Last Name: </b>{{ formStatus[ 'dataSent' ][ 'lastName' ] }}</p>
+      <p><b>Tel. Number: </b>{{ formStatus[ 'dataSent' ][ 'phoneNumber' ] }}</p>
+      <p><b>Email: </b>{{ formStatus[ 'dataSent' ][ 'email' ] }}</p>
+      <p><b>Contact you: </b>{{ formStatus[ 'dataSent' ][ 'agree' ] }}</p>
+      <p><b>How? </b>{{ formStatus[ 'dataSent' ][ 'contactType' ] }}</p>
+      <p><b>Feedback: </b>{{ formStatus[ 'dataSent' ][ 'message' ] }}</p>
     </div>
 
 </div>
