@@ -74,4 +74,11 @@ describe('MenuComponent', () => {
   it( 'should create', () => {
       expect( component ) .toBeTruthy();                    // Check that the component is created correctly
   });
+
+  it( 'dishes items should be 4', () => {
+      expect( component .dishes .length ) .toBe( 4 );                   // Check that the number of records is 4
+      expect( component .dishes[ 1 ] .name ) .toBe( 'Zucchipakoda' );   // Check that the name of the second record is "Zucchipakoda"
+      expect( component .dishes[ 3 ] .featured ) .toBeFalsy();          // Check that the value of the third record in the property is false
+  });
+
 });
