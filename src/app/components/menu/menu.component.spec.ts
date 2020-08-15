@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 /** Angular Material Components */
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -79,6 +81,19 @@ describe('MenuComponent', () => {
       expect( component .dishes .length ) .toBe( 4 );                   // Check that the number of records is 4
       expect( component .dishes[ 1 ] .name ) .toBe( 'Zucchipakoda' );   // Check that the name of the second record is "Zucchipakoda"
       expect( component .dishes[ 3 ] .featured ) .toBeFalsy();          // Check that the value of the third record in the property is false
+  });
+
+  it( 'should render the dishes in view', () => {
+      fixture .detectChanges();
+
+      let   // The Angular fixture provides the component's element directly through the fixture.nativeElement.
+          de: DebugElement,
+          el: HTMLElement;
+
+      de = fixture .debugElement .query( By .css( 'h1' ) );   // By.css() selects DebugElement nodes with a standard CSS selector, The query returns a DebugElement, You must unwrap that result to get the paragraph element
+      el = de .nativeElement;
+
+      expect( el .textContent ) .toContain( DISHES[ 0 ] .name .toUpperCase() );
   });
 
 });
